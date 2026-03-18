@@ -1,29 +1,30 @@
 import math_utils
+from typing import List, Dict, Tuple, Optional, Any
 
 # Task1
 print("----------------")
-n = int(input("Введите число N: "))
+n: int = int(input("Введите число N: "))
 
-results = [str(n * i) for i in range(1, 11)]
+results: list[str] = [str(n * i) for i in range(1, 11)]
 
 print(" | ".join(results))
 
 # Task2
 print("----------------")
-name = input("Введите ваше имя: ")
-age = int(input("Введите ваш возраст: "))
+name: str = input("Введите ваше имя: ")
+age: int = int(input("Введите ваш возраст: "))
 
 print(f"Через 10 лет тебе будет {age + 10} лет, {name}!")
 
 # Task3
 print("----------------")
-items = ["хлеб", "молоко", "кофе"]
-prices_usd = [1.5, 2.0, 8.0]
-rate = 3.2
+items: List[str] = ["хлеб", "молоко", "кофе"]
+prices_usd: List[float] = [1.5, 2.0, 8.0]
+rate: float = 3.2
 
-prices_rub = list(map(lambda x: round(x * rate, 1), prices_usd))
+prices_rub: List[float] = list(map(lambda x: round(x * rate, 1), prices_usd))
 
-result_price = dict(zip(items, prices_rub))
+result_price: Dict[str, float] = dict(zip(items, prices_rub))
 
 print(result_price)
 
@@ -31,7 +32,7 @@ print(result_price)
 print("----------------")
 
 
-def fizzbuzz(n):
+def fizzbuzz(n: int) -> str:
     if n % 15 == 0:
         return "FizzBuzz"
     if n % 3 == 0:
@@ -41,20 +42,20 @@ def fizzbuzz(n):
     return str(n)
 
 
-result_fizz = list(map(fizzbuzz, range(1, 21)))
+result_fizz: List[str] = list(map(fizzbuzz, range(1, 21)))
 print(result_fizz)
 
 # Task5
 print("----------------")
 
 
-def my_stats(*args):
+def my_stats(*args: float) -> Tuple[Optional[float], Optional[float], Optional[float]]:
     if not args:
         return None, None, None
 
-    minimum = min(args)
-    maximum = max(args)
-    average = sum(args) / len(args)
+    minimum: float = min(args)
+    maximum: float = max(args)
+    average: float = sum(args) / len(args)
 
     return minimum, maximum, average
 
@@ -63,26 +64,26 @@ def my_stats(*args):
 print("----------------")
 
 
-def build_profile(**kwargs):
-    profile = kwargs.copy()
+def build_profile(**kwargs: Any) -> Dict[str, Any]:
+    profile: Dict[str, Any] = kwargs.copy()
     profile["registered"] = True
     return profile
 
 
-user = build_profile(name="Алексей", age=22, city="Минск")
+user: Dict[str, Any] = build_profile(name="Алексей", age=22, city="Минск")
 print(user)
 
 # task7
 print("----------------")
 
-def math():
+def math() -> None:
     try:
-        user_input = input("Введите целое число: ")
-        num = int(user_input)
+        user_input: str = input("Введите целое число: ")
+        num: int = int(user_input)
 
-        sq = math_utils.square(num)
-        cb = math_utils.cube(num)
-        even = math_utils.is_even(num)
+        sq: int = math_utils.square(num)
+        cb: int = math_utils.cube(num)
+        even: bool = math_utils.is_even(num)
 
         print(f"Число: {num}")
         print(f"Квадрат: {sq}")
