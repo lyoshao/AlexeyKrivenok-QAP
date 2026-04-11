@@ -12,27 +12,23 @@ print("-----------------")
 class Library:
     books: List[str] = []
 
+    @classmethod
     def add_book(self, title: str) -> None:
         Library.books.append(title)
 
+    @classmethod
     def remove_book(self, title: str) -> None:
         if title in Library.books:
             Library.books.remove(title)
 
+    @classmethod
     def show_books(self) -> List[str]:
         return Library.books
 
-lib1 = Library()
-lib2 = Library()
+Library.add_book("Война и мир")
+Library.add_book("Евгений Онегин")
 
-lib1.add_book("1984")
-
-print(f"Книги в lib1: {lib1.show_books()}")
-print(f"Книги в lib2: {lib2.show_books()}")
-
-lib2.add_book("Brave New World")
-
-print(f"Общий список после добавления в lib2: {lib1.show_books()}")
+print(f"Общий список книг: {Library.show_books()}")
 
 
 #Task2
